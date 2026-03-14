@@ -4,8 +4,6 @@
 
 Cross-platform desktop application for analyzing Java thread dumps. Built with [Tauri v2](https://v2.tauri.app/) and TypeScript.
 
-![app-image](screenshot.png)
-
 ## Features
 
 - Open thread dump files (`.tdump`, `.txt`, `.log`) or drag-and-drop
@@ -16,6 +14,10 @@ Cross-platform desktop application for analyzing Java thread dumps. Built with [
 - Thread detail view with full stack trace
 - Dark / Light theme toggle
 - Fully offline - no network access, no telemetry
+
+## Screenshots
+
+![app-image](screenshot.png)
 
 ## Prerequisites
 
