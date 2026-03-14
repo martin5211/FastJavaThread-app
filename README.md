@@ -1,5 +1,7 @@
 # Fast Java Thread
 
+[![Release](https://github.com/martin5211/FastJavaThread-app/actions/workflows/release.yml/badge.svg)](https://github.com/martin5211/FastJavaThread-app/actions/workflows/release.yml)
+
 Cross-platform desktop application for analyzing Java thread dumps. Built with [Tauri v2](https://v2.tauri.app/) and TypeScript.
 
 ![app-image](screenshot.png)
