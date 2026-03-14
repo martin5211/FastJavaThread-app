@@ -1,0 +1,3 @@
+[submodule "lib/FastJavaThread"]
+	path = lib/FastJavaThread
+	url = https://github.com/martin5211/FastJavaThread.git

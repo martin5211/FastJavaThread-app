@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fast Java Thread</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="toolbar">
+    <h1>Fast Java Thread</h1>
+    <div class="toolbar-actions">
+      <button id="btn-open" title="Open thread dump file">Open File</button>
+      <button id="btn-theme" title="Toggle dark/light theme" aria-label="Toggle theme"></button>
+    </div>
+  </header>
+
+  <main class="app-layout">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-placeholder">Open or drag-drop a .tdump file to begin</div>
+    </aside>
+
+    <section id="dashboard" class="dashboard">
+      <div id="deadlocks" class="deadlock-alert" style="display:none;"></div>
+      <div id="summary" class="summary-grid"></div>
+      <div class="chart-container">
+        <canvas id="stateChart"></canvas>
+      </div>
+      <div id="hotMethods" class="hot-methods"></div>
+      <div id="threadDetail" class="thread-detail" style="display:none;"></div>
+    </section>
+  </main>
+
+  <script type="module" src="main.ts"></script>
+</body>
+</html>
