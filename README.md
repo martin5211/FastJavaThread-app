@@ -4,6 +4,10 @@
 
 Cross-platform desktop application for analyzing Java thread dumps. Built with [Tauri v2](https://v2.tauri.app/) and TypeScript.
 
+## Download
+
+Pre-built binaries for Windows, macOS, and Linux are available on the [Releases](https://github.com/martin5211/FastJavaThread-app/releases) page.
+
 ## Features
 
 - Open thread dump files (`.tdump`, `.txt`, `.log`) or drag-and-drop
