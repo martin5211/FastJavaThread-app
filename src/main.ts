@@ -8,6 +8,8 @@ import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { renderSidebar } from './ui/sidebar';
 import { renderDashboard } from './ui/dashboard';
 import { initTheme } from './ui/theme';
+import { initSettings, getMcpSettings } from './ui/settings';
+import { startMcpServer, stopMcpServer, isMcpRunning, getMcpError, onMcpStatusChange } from './mcp/manager';
 
 function analyze(text: string): AnalysisResult {
   const dump = parseThreadDump(text);
@@ -66,13 +68,45 @@ async function handleDrop(paths: string[]): Promise<void> {
   handleResult(analyze(text));
 }
 
+function updateMcpButton(error?: string): void {
+  const btn = document.getElementById('btn-mcp')!;
+  const running = isMcpRunning();
+  btn.classList.toggle('active', running);
+  if (error) {
+    btn.title = `MCP error: ${error}`;
+  } else {
+    btn.title = running ? 'MCP server running — click to stop' : 'Start MCP server';
+  }
+}
+
+async function toggleMcp(): Promise<void> {
+  if (isMcpRunning()) {
+    await stopMcpServer();
+  } else {
+    await startMcpServer(getMcpSettings());
+  }
+}
+
 // Init
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initSettings(undefined, getMcpError);
+
+  onMcpStatusChange((_, error) => updateMcpButton(error));
 
   document.getElementById('btn-open')!.addEventListener('click', () => {
     openFile();
   });
+
+  document.getElementById('btn-mcp')!.addEventListener('click', () => {
+    toggleMcp();
+  });
+
+  // Auto-start MCP if configured
+  const mcpSettings = getMcpSettings();
+  if (mcpSettings.autoStart) {
+    startMcpServer(mcpSettings);
+  }
 
   // Drag-drop via Tauri
   const appWindow = getCurrentWebviewWindow();

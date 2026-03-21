@@ -1,13 +1,14 @@
 {
   "name": "fast-java-thread",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Cross-platform Java thread dump analyzer",
   "private": true,
   "scripts": {
     "dev": "tauri dev",
-    "build": "tauri build",
+    "build": "npm run mcp:build && tauri build",
     "start": "tauri dev",
-    "test": "jest"
+    "test": "jest",
+    "mcp:build": "cd lib/FastJavaThread && npx tsc -p ./"
   },
   "dependencies": {
     "chart.js": "^4.4.7",

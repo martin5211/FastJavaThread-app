@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/nicedoc/tauri/v2/tooling/cli/schema.json",
   "productName": "Fast Java Thread",
-  "version": "0.1.0",
-  "identifier": "com.fastjavathread.app",
+  "version": "0.2.0",
+  "identifier": "com.fastjavathread.desktop",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:5173",

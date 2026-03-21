@@ -17,11 +17,42 @@ Pre-built binaries for Windows, macOS, and Linux are available on the [Releases]
 - Collapsible sidebar grouped by thread state
 - Thread detail view with full stack trace
 - Dark / Light theme toggle
-- Fully offline - no network access, no telemetry
+- MCP server with 5 analysis tools for AI assistant integration
+- Configurable MCP settings (transport, port, authentication)
+- Fully offline — no network access, no telemetry
 
 ## Screenshots
 
 ![app-image](screenshot.png)
+
+## MCP Integration
+
+The app includes a built-in [Model Context Protocol](https://modelcontextprotocol.io/) server that lets AI assistants analyze thread dumps directly.
+
+### Available tools
+
+| Tool | Description |
+|------|-------------|
+| `analyze_thread_dump` | Full analysis: thread states, hot methods, deadlocks |
+| `detect_deadlocks` | Find deadlock cycles with lock chain details |
+| `get_hot_methods` | Most frequent methods across all stack traces |
+| `get_thread_summary` | Thread count, state breakdown, JVM version |
+| `find_threads_by_method` | Search threads by method name or regex |
+
+### Usage
+
+1. Click the **MCP** button in the toolbar to start the server
+2. Configure transport and port in **Settings** (gear icon)
+3. Connect your MCP client (e.g. Claude Code) to `localhost:3100` (HTTP) or via stdio
+
+For stdio mode, run the server directly:
+
+```bash
+npm run mcp:build
+node lib/FastJavaThread/out/src/mcp/server.js
+```
+
+> **Note:** MCP server requires [Node.js 20+](https://nodejs.org/) installed on your machine.
 
 ## Prerequisites
 
